@@ -1,0 +1,18 @@
+<h2><%=@category.name%></h2>
+<div id="categories-index">
+    <%if !@books.empty?%>
+        <% @books.each_slice(4) do |book_s4| %>
+            <div class="row">
+                <% book_s4.each do |book|%>
+                    <div class="col-md-3 col-sm-3">
+                        <h3> <%=book.title.split(" ").collect{|item| item.capitalize() }.join(" ")%> </h3>
+                        <%=puts(book.cover_path); image_tag(book.cover_path)%>
+                        <%= link_to 'Read_More', book_path(book) ,class:"btn btn-primary" %>
+                    </div>
+                <%end%>
+            </div>
+        <%end%>
+    <%else%>
+        <p>There is no book in this category</p>
+    <%end%>
+</div >

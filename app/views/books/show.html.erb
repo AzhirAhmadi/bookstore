@@ -1,0 +1,26 @@
+<div id="books-show">
+    <h2><%=@book.title %></h2>
+    <div class="books-show-left">
+        <%= image_tag(@book.cover_path)%>
+    </div>
+    <div class="books-show-right">
+        <h3>Book info:</h3>
+        <ul>
+            <li><strong>Category: </strong><%= @book.category.name %></li>
+            <li><strong>Authoer: </strong><%= @book.author.first_name+" "+ @book.author.last_name%></li>
+            <li><strong>Publisher: </strong><%= @book.publisher.name %></li>
+            <li><strong>Year: </strong><%= @book.year %></li>
+            <li><strong>ISBN: </strong><%= @book.isbn %></li>
+            <li><strong>Format: </strong><%= @book.format %></li>
+            <li><strong>Pages: </strong><%= @book.pages %></li>
+        </ul>
+        <% s="https://www.amazon.com/gp/product/0399226907/ref=s9_acsd_ri_bw_c_x_1_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-12&pf_rd_r=66RKXX563PTZXY5CP5FE&pf_rd_t=101&pf_rd_p=b1b6e7c5-f122-45e8-9a8c-d025cdf29298&pf_rd_i=283155"%>
+        <%= link_to "Buy For $50.0",s,class:"btn btn-success",target:"_blank"%>
+    </div>
+    <div class="clearfix"></div>
+    <h4>Excerpt</h4>
+    <p><%=@book.excerpt%></p>
+
+    <h3>Admin Functions</h3>
+    <%=link_to "Edit",edit_book_path(@book.id)%> | <%= link_to "Delete", book_path(@book),method: :delete, data:{confirm: "Are you sure? "}%>
+</div>
